@@ -18,6 +18,7 @@ public class App {
 		config.addAnnotatedClass(Employee.class);
 		config.addAnnotatedClass(Company.class);
 		config.addAnnotatedClass(Phone.class);
+		config.addAnnotatedClass(Meeting.class);
 
 		StandardServiceRegistryBuilder reg = new StandardServiceRegistryBuilder().applySettings(config.getProperties());
 		SessionFactory sf = config.buildSessionFactory(reg.build());
@@ -47,7 +48,7 @@ public class App {
 		 */
 
 		/*
-		 * Operation: One to Many Relation 
+		 * Operation: One to Many Relation
 		 *
 		 * Employee emp3=new Employee();
 		 *
@@ -61,25 +62,50 @@ public class App {
 		 * 
 		 * session.save(emp3); session.save(p1); session.save(p2);
 		 */
-		
-		Employee emp4=new Employee();
-		emp4.setId(104);
-		emp4.setName("Kap");
-		
-		Phone p3=new Phone();
-		p3.setId(903);
-		p3.setNumber("9904433185");
-		p3.setEmployee(emp4);
-		
-		Phone p4=new Phone();
-		p4.setId(904);
-		p4.setNumber("9898230786");
-		p4.setEmployee(emp4);
-		
-		session.save(emp4);
-		session.save(p3);
-		session.save(p4);
 
+		/*Operation: Many to One Relation
+		 * Employee emp4=new Employee(); emp4.setId(104); emp4.setName("Kap");
+		 * 
+		 * Phone p3=new Phone(); p3.setId(903); p3.setNumber("9904433185");
+		 * p3.setEmployee(emp4);
+		 * 
+		 * Phone p4=new Phone(); p4.setId(904); p4.setNumber("9898230786");
+		 * p4.setEmployee(emp4);
+		 * 
+		 * session.save(emp4); session.save(p3); session.save(p4);
+		 */
+		
+		Employee emp5=new Employee();
+		emp5.setId(105);
+		emp5.setName("Hk1");
+		
+		Employee emp6=new Employee();
+		emp6.setId(106);
+		emp6.setName("Hk2");
+		
+		Meeting meet1=new Meeting();
+		meet1.setId(1001);
+		meet1.setName("Work Updates");
+		meet1.getEmployeeList().add(emp5);
+		meet1.getEmployeeList().add(emp6);
+		
+		Meeting meet2=new Meeting();
+		meet2.setId(1002);
+		meet2.setName("External Viva");
+		meet2.getEmployeeList().add(emp5);
+		meet2.getEmployeeList().add(emp6);
+		
+		emp5.getMeetingList().add(meet1);
+		emp5.getMeetingList().add(meet2);
+		
+		emp6.getMeetingList().add(meet1);
+		emp6.getMeetingList().add(meet2);
+		
+		session.save(emp5);
+		session.save(emp6);
+		session.save(meet1);
+		session.save(meet2);
+		
 		transaction.commit();
 		session.close();
 	}
