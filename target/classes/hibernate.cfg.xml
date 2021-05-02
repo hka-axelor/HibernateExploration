@@ -11,5 +11,7 @@
   <property name="hbm2ddl.auto">update</property>
   <property name="show_sql">true</property>
   <mapping class="com.axelor.demo.hibernatedemo.Student"/>
+  <mapping class="com.axelor.demo.hibernatedemo.Employee"/>
+  <mapping class="com.axelor.demo.hibernatedemo.Company"/>
  </session-factory>
 </hibernate-configuration>
