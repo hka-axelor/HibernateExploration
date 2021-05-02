@@ -2,8 +2,11 @@ package com.axelor.demo.hibernatedemo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import java.util.*;
 
 @Entity
 
@@ -12,15 +15,27 @@ public class Employee {
 	@Id
 	private int id;
 	private String name;
-	//Adding OneToOne Relationship with Company
-	@OneToOne
-	private Company company;
 	
-	public Company getCompany() {
+	/*Adding OneToOne Relationship with Company
+	@OneToOne
+	private Company company;*/
+	
+	/*public Company getCompany() {
 		return company;
 	}
 	public void setCompany(Company company) {
 		this.company = company;
+	}*/
+	
+	@OneToMany
+	private List<Phone> phone=new ArrayList<Phone>();
+	
+	
+	public List<Phone> getPhone() {
+		return phone;
+	}
+	public void setPhone(List<Phone> phone) {
+		this.phone = phone;
 	}
 	public int getId() {
 		return id;
@@ -36,7 +51,7 @@ public class Employee {
 	}
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + "]";
+		return "Employee [id=" + id + ", name=" + name + ", phone=" + phone + "]";
 	}
 	
 }

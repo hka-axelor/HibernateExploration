@@ -13,5 +13,6 @@
   <mapping class="com.axelor.demo.hibernatedemo.Student"/>
   <mapping class="com.axelor.demo.hibernatedemo.Employee"/>
   <mapping class="com.axelor.demo.hibernatedemo.Company"/>
+  <mapping class="com.axelor.demo.hibernatedemo.Phone"/>
  </session-factory>
 </hibernate-configuration>
