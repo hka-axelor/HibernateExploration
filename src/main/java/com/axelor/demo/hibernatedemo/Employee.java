@@ -27,6 +27,7 @@ public class Employee {
 		this.company = company;
 	}*/
 	
+	/*Adding OneToMany Relationship with Phone
 	@OneToMany
 	private List<Phone> phone=new ArrayList<Phone>();
 	
@@ -36,7 +37,8 @@ public class Employee {
 	}
 	public void setPhone(List<Phone> phone) {
 		this.phone = phone;
-	}
+	}*/
+	
 	public int getId() {
 		return id;
 	}
@@ -48,10 +50,6 @@ public class Employee {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", phone=" + phone + "]";
 	}
 	
 }

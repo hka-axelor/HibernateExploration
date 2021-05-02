@@ -32,7 +32,7 @@ public class App {
 		 */
 
 		/*
-		 * One to One Relation
+		 * Operation: One to One Relation
 		 * 
 		 * Employee emp1=new Employee(); emp1.setId(101); emp1.setName("Hassan");
 		 * 
@@ -45,26 +45,41 @@ public class App {
 		 * 
 		 * session.save(emp1); session.save(emp2); session.save(company);
 		 */
+
+		/*
+		 * Operation: One to Many Relation 
+		 *
+		 * Employee emp3=new Employee();
+		 *
+		 * emp3.setId(103); emp3.setName("Hancy");
+		 * 
+		 * Phone p1=new Phone(); p1.setId(901); p1.setNumber("9925897864");
+		 * 
+		 * Phone p2=new Phone(); p2.setId(902); p2.setNumber("9825264187");
+		 * 
+		 * emp3.getPhone().add(p1); emp3.getPhone().add(p2);
+		 * 
+		 * session.save(emp3); session.save(p1); session.save(p2);
+		 */
 		
-		Employee emp3=new Employee();
-		emp3.setId(103);
-		emp3.setName("Hancy");
+		Employee emp4=new Employee();
+		emp4.setId(104);
+		emp4.setName("Kap");
 		
-		Phone p1=new Phone();
-		p1.setId(901);
-		p1.setNumber("9925897864");
+		Phone p3=new Phone();
+		p3.setId(903);
+		p3.setNumber("9904433185");
+		p3.setEmployee(emp4);
 		
-		Phone p2=new Phone();
-		p2.setId(902);
-		p2.setNumber("9825264187");
+		Phone p4=new Phone();
+		p4.setId(904);
+		p4.setNumber("9898230786");
+		p4.setEmployee(emp4);
 		
-		emp3.getPhone().add(p1);
-		emp3.getPhone().add(p2);
-		
-		session.save(emp3);
-		session.save(p1);
-		session.save(p2);
-		
+		session.save(emp4);
+		session.save(p3);
+		session.save(p4);
+
 		transaction.commit();
 		session.close();
 	}

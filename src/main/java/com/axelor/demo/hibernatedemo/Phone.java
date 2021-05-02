@@ -2,6 +2,7 @@ package com.axelor.demo.hibernatedemo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -10,6 +11,17 @@ public class Phone {
 	@Id
 	private int id;
 	private String number;
+	
+	@ManyToOne
+	private Employee employee;
+	
+	public Employee getEmployee() {
+		return employee;
+	}
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	
 	public int getId() {
 		return id;
 	}
